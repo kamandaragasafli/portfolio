@@ -1,7 +1,8 @@
 "use client";
 
-import Link from "next/link";
 import { ProjectShowcase } from "../components/ProjectShowcase";
+import { PurpleAmbient } from "../components/PurpleAmbient";
+import { SiteFooter } from "../components/SiteFooter";
 import { SiteHeader } from "../components/SiteHeader";
 import { projects } from "../data/projects";
 import { useLanguage } from "../i18n/LanguageContext";
@@ -12,14 +13,7 @@ export default function ProjectsPage() {
 
   return (
     <main className="relative min-h-screen overflow-x-hidden">
-      <div
-        className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-[min(600px,70vh)] bg-[url('/hero-bg.webp')] bg-cover bg-top bg-no-repeat"
-        aria-hidden
-      />
-      <div
-        className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-[min(600px,70vh)] bg-gradient-to-b from-transparent from-60% to-[#eeecf6]"
-        aria-hidden
-      />
+      <PurpleAmbient />
 
       <div className="mx-auto max-w-6xl px-3 py-3 sm:px-4 sm:py-4">
         <SiteHeader variant="projects" />
@@ -34,7 +28,7 @@ export default function ProjectsPage() {
           <ProjectShowcase projects={projects} />
         </section>
 
-        <footer className="px-2 py-8 text-center text-xs text-ink/40">{pick(ui.footer, lang)}</footer>
+        <SiteFooter variant="projects" />
       </div>
     </main>
   );

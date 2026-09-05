@@ -10,7 +10,9 @@ import {
 } from "react-icons/si";
 import { TbApi, TbAutomation, TbBrandReactNative, TbDatabase, TbFileExcel } from "react-icons/tb";
 import { ProjectShowcase } from "./components/ProjectShowcase";
+import { PurpleAmbient } from "./components/PurpleAmbient";
 import { ServiceShowcase } from "./components/ServiceShowcase";
+import { SiteFooter } from "./components/SiteFooter";
 import { SiteHeader } from "./components/SiteHeader";
 import { projects } from "./data/projects";
 import { useLanguage } from "./i18n/LanguageContext";
@@ -34,22 +36,7 @@ export default function Page() {
 
   return (
     <main className="relative min-h-screen overflow-x-hidden">
-      <div
-        className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-[min(920px,90vh)] bg-[url('/hero-bg.webp')] bg-cover bg-top bg-no-repeat"
-        aria-hidden
-      />
-      <div
-        className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-[min(920px,90vh)] bg-gradient-to-b from-transparent from-60% to-[#eeecf6]"
-        aria-hidden
-      />
-      <div
-        className="pointer-events-none absolute inset-x-0 bottom-0 -z-10 h-[min(920px,90vh)] bg-[url('/footer-bg.webp')] bg-cover bg-bottom bg-no-repeat"
-        aria-hidden
-      />
-      <div
-        className="pointer-events-none absolute inset-x-0 bottom-0 -z-10 h-[min(920px,90vh)] bg-gradient-to-t from-transparent via-white/10 to-[#eeecf6]"
-        aria-hidden
-      />
+      <PurpleAmbient />
 
       <div className="mx-auto max-w-6xl px-3 py-3 sm:px-4 sm:py-4">
         <SiteHeader />
@@ -85,44 +72,19 @@ export default function Page() {
               </div>
             </div>
 
-            <div className="relative flex min-h-[220px] items-center justify-center sm:min-h-[280px] md:min-h-[320px]">
-              <div className="glass absolute right-0 top-0 hidden rounded-2xl px-4 py-3 text-center sm:block">
-                <p className="text-xl font-semibold">Fullstack</p>
-                <p className="text-[10px] text-ink/50">Developer</p>
-              </div>
-              <div className="glass animate-float w-full max-w-sm overflow-hidden rounded-xl shadow-lg shadow-violet/10">
+            <div className="relative mx-auto w-full max-w-md min-w-0 md:mx-0 md:max-w-sm lg:max-w-md">
+              <div className="glass animate-float overflow-hidden rounded-xl shadow-lg shadow-violet/10 sm:rounded-2xl">
                 <div className="flex items-center gap-1.5 border-b border-white/40 bg-white/30 px-3 py-2">
                   <span className="h-2 w-2 rounded-full bg-red-400" />
                   <span className="h-2 w-2 rounded-full bg-yellow-400" />
                   <span className="h-2 w-2 rounded-full bg-green-400" />
-                  <span className="ml-1 text-[9px] text-ink/40">~/portfolio</span>
+                  <span className="ml-1 truncate text-[9px] text-ink/40">Dashboard</span>
                 </div>
-                <pre className="overflow-x-auto bg-white/20 p-3 font-mono text-[8px] leading-relaxed sm:text-[9px]">
-                  <code>
-                    <span className="text-violet">const</span>{" "}
-                    <span className="text-sky-600">dev</span> = {"{"}
-                    {"\n"}{"  "}
-                    <span className="text-ink/70">name</span>:{" "}
-                    <span className="text-emerald-600">&apos;Kamandar&apos;</span>,
-                    {"\n"}{"  "}
-                    <span className="text-ink/70">role</span>:{" "}
-                    <span className="text-emerald-600">&apos;fullstack&apos;</span>,
-                    {"\n"}{"  "}
-                    <span className="text-ink/70">stack</span>: [
-                    {"\n"}{"    "}
-                    <span className="text-emerald-600">&apos;react&apos;</span>,
-                    {"\n"}{"    "}
-                    <span className="text-emerald-600">&apos;django&apos;</span>,
-                    {"\n"}{"    "}
-                    <span className="text-emerald-600">&apos;flutter&apos;</span>
-                    {"\n"}{"  "}],
-                    {"\n"}{"  "}
-                    <span className="text-ink/70">status</span>:{" "}
-                    <span className="text-emerald-600">&apos;ready&apos;</span>
-                    {"\n"}
-                    {"}"};
-                  </code>
-                </pre>
+                <img
+                  src="/hero-dashboard.png"
+                  alt="Dashboard"
+                  className="h-auto max-h-56 w-full object-cover object-left-top sm:max-h-64 md:max-h-72"
+                />
               </div>
             </div>
           </div>
@@ -239,54 +201,44 @@ export default function Page() {
           style={{ animationDelay: "100ms" }}
         >
           <p className="text-xs font-medium tracking-wide text-violet">{pick(ui.connect, lang)}</p>
-          <div className="mt-4 grid gap-6 sm:gap-8 md:grid-cols-2">
-            <div className="min-w-0">
-              <h3 className="text-xl font-semibold leading-snug sm:text-2xl">{pick(ui.contactTitle, lang)}</h3>
-              <div className="mt-5 space-y-2 break-words text-sm text-ink/60 sm:mt-6">
-                <p>
-                  ✉{" "}
-                  <a href="mailto:akasaflikamandar@gmail.com" className="hover:text-violet">
-                    akasaflikamandar@gmail.com
-                  </a>
-                </p>
-                <p>
-                  ☎{" "}
-                  <a href="tel:+994504768843" className="hover:text-violet">
-                    +994 50 476 88 43
-                  </a>
-                </p>
-                <p>💼 {pick(ui.role, lang)}</p>
-                <p>🛠 React · Python · Django · Flutter · AI Automation</p>
-              </div>
+          <div className="mt-4 max-w-xl">
+            <h3 className="text-xl font-semibold leading-snug sm:text-2xl">{pick(ui.contactTitle, lang)}</h3>
+            <div className="mt-5 space-y-2 break-words text-sm text-ink/60 sm:mt-6">
+              <p>
+                ✉{" "}
+                <a href="mailto:akasaflikamandar@gmail.com" className="hover:text-violet">
+                  akasaflikamandar@gmail.com
+                </a>
+              </p>
+              <p>
+                ☎{" "}
+                <a href="tel:+994504768843" className="hover:text-violet">
+                  +994 50 476 88 43
+                </a>
+              </p>
+              <p>💼 {pick(ui.role, lang)}</p>
+              <p>🛠 React · Python · Django · Flutter · AI Automation</p>
             </div>
-            <form className="glass space-y-3 rounded-2xl p-4 sm:p-5">
-              <div className="grid gap-3 sm:grid-cols-2">
-                <input
-                  className="w-full rounded-xl border border-ink/10 bg-white/70 px-4 py-2.5 text-sm"
-                  placeholder={pick(ui.name, lang)}
-                />
-                <input
-                  className="w-full rounded-xl border border-ink/10 bg-white/70 px-4 py-2.5 text-sm"
-                  placeholder={pick(ui.email, lang)}
-                />
-              </div>
-              <input
-                className="w-full rounded-xl border border-ink/10 bg-white/70 px-4 py-2.5 text-sm"
-                placeholder={pick(ui.project, lang)}
-              />
-              <textarea
-                className="w-full rounded-xl border border-ink/10 bg-white/70 px-4 py-2.5 text-sm"
-                rows={3}
-                placeholder={pick(ui.message, lang)}
-              />
-              <button className="w-full rounded-xl bg-ink py-3 text-sm font-medium text-white">
-                {pick(ui.send, lang)}
-              </button>
-            </form>
+            <div className="mt-6 flex flex-wrap gap-3">
+              <a
+                href="mailto:akasaflikamandar@gmail.com"
+                className="inline-flex items-center justify-center rounded-full bg-ink px-5 py-2.5 text-sm font-medium text-white"
+              >
+                {pick(ui.contactMe, lang)}
+              </a>
+              <a
+                href="https://wa.me/994504768843"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center rounded-full bg-[#25D366] px-5 py-2.5 text-sm font-medium text-white"
+              >
+                WhatsApp
+              </a>
+            </div>
           </div>
         </section>
 
-        <footer className="px-2 py-8 text-center text-xs text-ink/40">{pick(ui.footer, lang)}</footer>
+        <SiteFooter />
       </div>
 
       <a
